@@ -57,26 +57,36 @@ conan list "nlohmann_json/*"
 В папке test-project/ лежит простое C++-приложение, которое проверяет, что библиотека действительно работает после установки.
 
 ## Вариант 1: проверка через .deb
-1.Установите пакет:
+### 1.Установите пакет:
 ```bash
 sudo dpkg -i nlohmann-json-3.11.3.deb
 ```
 
-2.Соберите и запустите тест:
+### 2.Соберите и запустите тест:
 ```bash
 cd test-project
 mkdir build && cd build
 cmake ..
-make
+сmake --build .
 ./json-test
 ```
 
 ## Вариант 2: проверка через Conan
-1.Из папки test-project/:
+### 1.Перейдите в папку тестового проекта:
 ```bash
-conan install . --build=missing
+cd test-project
+```
+
+### 2.Установите зависимости и сгенерируйте toolchain:
+```bash
+conan install . --output-folder=build --build=missing
+```
+
+### 3.Соберите проект:
+```bash
+cd build
 cmake .. -DCMAKE_TOOLCHAIN_FILE=conan_toolchain.cmake
-make
+cmake --build .
 ./json-test
 ```
 
