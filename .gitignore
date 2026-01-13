@@ -4,7 +4,7 @@
 # Папки сборки (содержат структуру Debian-пакета)
 nlohmann-json-*/
 
-# Архивы исходников (если скачиваете через wget/curl)
+# Архивы исходников
 *.zip
 *.tar.gz
 *.tar.bz2
@@ -16,5 +16,14 @@ Thumbs.db
 .*.swp
 *.bak
 
-# Локальные скрипты/логи (если появятся)
+# Локальные скрипты/логи
 build.log
+
+# Conan cache 
+.conan/
+~/.conan2/
+
+# Другие:
+conan.lock
+conanbuild.sh
+conanrun.sh
